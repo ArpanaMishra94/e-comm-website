@@ -1,6 +1,6 @@
-import React from "react";
-import Header from "./components/Header";
 import { Container } from "react-bootstrap";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
 	return (
@@ -11,6 +11,7 @@ function App() {
 					<h1>Welcome to Shopify</h1>
 				</Container>
 			</main>
+			<Footer />
 		</>
 	);
 }
