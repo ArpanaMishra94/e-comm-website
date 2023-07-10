@@ -21,7 +21,8 @@
 	},
 	"homepage": "https://github.com/ArpanaMishra94/e-comm-website#readme",
 	"dependencies": {
-		"express": "^4.18.2"
+		"express": "^4.18.2",
+		"mongoose": "^7.3.2"
 	},
 	"devDependencies": {
 		"concurrently": "^8.2.0",
