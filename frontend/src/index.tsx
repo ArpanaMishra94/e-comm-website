@@ -9,7 +9,7 @@ import {
 	Route,
 	RouterProvider,
 } from "react-router-dom";
-import { Provider } from "react-redux";
+import { Provider } from 'react-redux/es/exports'
 import store from "./store";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
