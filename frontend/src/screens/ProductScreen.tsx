@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
 import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
 import Loader from "../components/Loader";
+import Message from "../components/Message";
 import Rating from "../components/Rating";
 // import ProductProp from "../types/products";
 
@@ -25,7 +26,7 @@ const ProductScreen = () => {
 			{isLoading ? (
 				<Loader />
 			) : error ? (
-				<div>error</div>
+				<Message variant="danger">error</Message>
 			) : (
 				<>
 					{product ? (
