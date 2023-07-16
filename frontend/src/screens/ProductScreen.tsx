@@ -33,9 +33,9 @@ const ProductScreen = () => {
 	} = useGetProductDetailsQuery(productId);
 
 	const addToCartHandler = () => {
-		dispatch(addToCart({...product, qty}));
-		navigate('/cart');
-	}	
+		dispatch(addToCart({ ...product, qty }));
+		navigate("/cart");
+	};
 
 	// useEffect(() => {
 	// 	console.log(product);

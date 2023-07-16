@@ -5,8 +5,7 @@ import { useSelector } from "react-redux";
 import logo from "../assets/logo.png";
 
 const Header = () => {
-	const {cartItems} = useSelector((state:any) => state.cart);
-	console.log(cartItems);
+	const { cartItems } = useSelector((state: any) => state.cart);
 
 	return (
 		<header>
@@ -25,13 +24,14 @@ const Header = () => {
 							<LinkContainer to="/cart">
 								<Nav.Link>
 									<FaShoppingCart /> Cart
-									{
-										cartItems.length > 0 && (
-											<Badge pill bg='success' style={{marginLeft: '5px'}}>
-												{cartItems.reduce((acc:number, curr:{qty: number}) => acc + curr.qty, 0)}
-											</Badge>
-										)
-									}
+									{cartItems.length > 0 && (
+										<Badge pill bg="success" style={{ marginLeft: "5px" }}>
+											{cartItems.reduce(
+												(acc: number, curr: { qty: number }) => acc + curr.qty,
+												0
+											)}
+										</Badge>
+									)}
 								</Nav.Link>
 							</LinkContainer>
 

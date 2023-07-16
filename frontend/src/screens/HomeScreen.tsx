@@ -14,29 +14,27 @@ const HomeScreen = () => {
 		console.log(error);
 		// console.log(isLoading);
 		// console.log(products);
-	}, [error])
+	}, [error]);
 
 	return (
 		<>
-			{
-				isLoading ? (
-					<Loader/>
-				) : error ? (
-					// <Message variant="danger">{error?.data?.message}</Message>    // Check Type
-					<Message variant="danger">{parsedError}</Message>
-				) : (
-					<>
-						<h1>Latest Products</h1>
-						<Row>
-							{products?.map((product: ProductProp) => (
-								<Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-									<Product {...product} />
-								</Col>
-							))}
-						</Row>
-					</>
-				)
-			}
+			{isLoading ? (
+				<Loader />
+			) : error ? (
+				// <Message variant="danger">{error?.data?.message}</Message>    // Check Type
+				<Message variant="danger">{parsedError}</Message>
+			) : (
+				<>
+					<h1>Latest Products</h1>
+					<Row>
+						{products?.map((product: ProductProp) => (
+							<Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+								<Product {...product} />
+							</Col>
+						))}
+					</Row>
+				</>
+			)}
 		</>
 	);
 };

@@ -9,4 +9,5 @@ export default interface ProductProp {
 	rating: number;
 	numReviews: number;
 	image: string;
+	qty: number;
 }
