@@ -37,11 +37,11 @@ const ProductScreen = () => {
 		navigate('/cart');
 	}	
 
-	useEffect(() => {
-		console.log(product);
-		// console.log(isLoading);
-		// console.log(error);
-	}, [product]);
+	// useEffect(() => {
+	// 	console.log(product);
+	// 	// console.log(isLoading);
+	// 	// console.log(error);
+	// }, [product]);
 
 	return (
 		<>
