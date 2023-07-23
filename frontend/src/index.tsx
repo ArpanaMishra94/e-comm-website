@@ -9,6 +9,7 @@ import {
 	Route,
 	RouterProvider,
 } from "react-router-dom";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { Provider } from "react-redux/es/exports";
 import store from "./store";
 // import "bootstrap/dist/css/bootstrap.min.css";
@@ -47,10 +48,18 @@ const router = createBrowserRouter(
 const root = ReactDOM.createRoot(
 	document.getElementById("root") as HTMLElement
 );
+
+const paypalOptions = {
+	clientId: "your-paypal-client-id",
+	// Add other configuration options for PayPal here if needed
+};
+
 root.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<RouterProvider router={router} />
+			<PayPalScriptProvider options={paypalOptions} deferLoading={true}>
+				<RouterProvider router={router} />
+			</PayPalScriptProvider>
 		</Provider>
 	</React.StrictMode>
 );
