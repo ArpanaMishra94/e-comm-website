@@ -9,7 +9,7 @@ import {
 	Route,
 	RouterProvider,
 } from "react-router-dom";
-import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { Provider } from "react-redux/es/exports";
 import store from "./store";
 // import "bootstrap/dist/css/bootstrap.min.css";
@@ -50,14 +50,15 @@ const root = ReactDOM.createRoot(
 );
 
 const paypalOptions = {
-	clientId: "your-paypal-client-id",
+	clientId: process.env.REACT_APP_PAYPAL_CLIENT_ID!,
+	currency: "USD",
+	intent: "capture",
 	// Add other configuration options for PayPal here if needed
 };
-
 root.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<PayPalScriptProvider options={paypalOptions} deferLoading={true}>
+			<PayPalScriptProvider options={paypalOptions}>
 				<RouterProvider router={router} />
 			</PayPalScriptProvider>
 		</Provider>
