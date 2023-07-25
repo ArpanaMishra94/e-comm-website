@@ -9,7 +9,7 @@ import {
 	Route,
 	RouterProvider,
 } from "react-router-dom";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { Provider } from "react-redux/es/exports";
 import store from "./store";
 // import "bootstrap/dist/css/bootstrap.min.css";
@@ -23,9 +23,11 @@ import RegisterScreen from "./screens/RegisterScreen";
 import ShippingScreen from "./screens/ShippingScreen";
 import PaymentScreen from "./screens/PaymentScreen";
 import PrivateRoute from "./components/PrivateRoute";
+import AdminRoute from "./components/AdminRoute";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
 import ProfileScreen from "./screens/ProfileScreen";
+import OrderListScreen from "./screens/admin/OrderListScreen";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -42,6 +44,10 @@ const router = createBrowserRouter(
 				<Route path="/placeorder" element={<PlaceOrderScreen />} />
 				<Route path="/order/:id" element={<OrderScreen />} />
 				<Route path="/profile" element={<ProfileScreen />} />
+			</Route>
+
+			<Route path="" element={<AdminRoute />}>
+				<Route path="/admin/orderlist" element={<OrderListScreen />} />
 			</Route>
 		</Route>
 	)
