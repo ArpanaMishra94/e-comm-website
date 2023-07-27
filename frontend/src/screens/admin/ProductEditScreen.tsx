@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import {
 	useUpdateProductMutation,
 	useGetProductDetailsQuery,
+	useUploadProductImageMutation,
 } from "../../slices/productsApiSlice";
 import FormContainer from "../../components/FormContainer";
 
@@ -30,6 +31,9 @@ const ProductEditScreen = () => {
 
 	const [updateProduct, { isLoading: loadingUpdate }] =
 		useUpdateProductMutation();
+
+	const [uploadProductImage, { isLoading: loadingUpload }] =
+		useUploadProductImageMutation();
 
 	const navigate = useNavigate();
 
@@ -67,6 +71,19 @@ const ProductEditScreen = () => {
 		}
 	};
 
+	const uploadFileHandler = async (e: any) => {
+		const formData = new FormData();
+		formData.append("image", e.target.files[0]);
+		try {
+			const res = await uploadProductImage(formData).unwrap();
+			toast.success(res.message);
+			setImage(res.image);
+		} catch (err) {
+			// toast.error(err?.data?.message || err.error);
+			toast.error("error");
+		}
+	};
+
 	return (
 		<>
 			<Link to="/admin/productlist" className="btn btn-light my-3">
@@ -93,8 +110,6 @@ const ProductEditScreen = () => {
 							></Form.Control>
 						</Form.Group>
 
-						{/* Image Input */}
-
 						<Form.Group controlId="price" className="my-2">
 							<Form.Label>Price</Form.Label>
 							<Form.Control
@@ -102,6 +117,21 @@ const ProductEditScreen = () => {
 								placeholder="Enter price"
 								value={price}
 								onChange={(e) => setPrice(parseInt(e.target.value, 10))}
+							></Form.Control>
+						</Form.Group>
+
+						<Form.Group controlId="image" className="my-2">
+							<Form.Label>Image </Form.Label>
+							<Form.Control
+								type="text"
+								placeholder="Enter image url"
+								value={image}
+								onChange={(e) => setImage}
+							></Form.Control>
+							<Form.Control
+								type="file"
+								aria-label="Choose file"
+								onChange={uploadFileHandler}
 							></Form.Control>
 						</Form.Group>
 
