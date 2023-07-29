@@ -3,9 +3,16 @@ import Product from "../models/productModel.js";
 
 // @desc  Fetch all products
 // @route  GET/api/products
+// @access Public
 const getProducts = asyncHandler(async (req, resp) => {
-	const products = await Product.find({});
-	resp.json(products);
+	const pageSize = 2;
+	const page = Number(req.query.pageNumber) || 1;
+	const count = await Product.countDocuments();
+
+	const products = await Product.find({})
+		.limit(pageSize)
+		.skip(pageSize * (page - 1));
+	resp.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
 
 // @desc  Fetch a product
