@@ -9,8 +9,11 @@ import ProductProp from "../types/products";
 import { useEffect } from "react";
 
 const HomeScreen = () => {
-	const { pageNumber } = useParams();
-	const { data, isLoading, error } = useGetProductsQuery({ pageNumber });
+	const { pageNumber, keyword } = useParams();
+	const { data, isLoading, error } = useGetProductsQuery({
+		keyword,
+		pageNumber,
+	});
 	const parsedError = JSON.stringify(error);
 
 	useEffect(() => {
@@ -36,7 +39,12 @@ const HomeScreen = () => {
 							</Col>
 						))}
 					</Row>
-					<Paginate pages={data.pages} page={data.page} isAdmin={false} />
+					<Paginate
+						pages={data.pages}
+						page={data.page}
+						isAdmin={false}
+						keyword={keyword ? keyword : ""}
+					/>
 				</>
 			)}
 		</>
