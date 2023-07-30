@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Paginate from "../components/Paginate";
 import ProductProp from "../types/products";
+import ProductCarousel from "../components/ProductCarousel";
 import { useEffect } from "react";
 
 const HomeScreen = () => {
@@ -25,7 +26,9 @@ const HomeScreen = () => {
 
 	return (
 		<>
-			{keyword && (
+			{!keyword ? (
+				<ProductCarousel />
+			) : (
 				<Link to="/" className="btn btn-light mb-4">
 					Go Back
 				</Link>
