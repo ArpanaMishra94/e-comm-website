@@ -20,6 +20,7 @@ import { addToCart } from "../slices/cartSlice";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Rating from "../components/Rating";
+import Meta from "../components/Meta";
 // import ProductProp from "../types/products";
 
 const ProductScreen = () => {
@@ -81,6 +82,7 @@ const ProductScreen = () => {
 				<>
 					{product ? (
 						<>
+							<Meta title={product.name} />
 							<Row>
 								<Col md={5}>
 									<Image src={product.image} alt={product.name} fluid />

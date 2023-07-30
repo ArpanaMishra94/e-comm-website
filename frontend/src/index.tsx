@@ -10,6 +10,7 @@ import {
 	RouterProvider,
 } from "react-router-dom";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { HelmetProvider } from "react-helmet-async";
 import { Provider } from "react-redux/es/exports";
 import store from "./store";
 // import "bootstrap/dist/css/bootstrap.min.css";
@@ -83,11 +84,13 @@ const paypalOptions = {
 };
 root.render(
 	<React.StrictMode>
-		<Provider store={store}>
-			<PayPalScriptProvider options={paypalOptions}>
-				<RouterProvider router={router} />
-			</PayPalScriptProvider>
-		</Provider>
+		<HelmetProvider>
+			<Provider store={store}>
+				<PayPalScriptProvider options={paypalOptions}>
+					<RouterProvider router={router} />
+				</PayPalScriptProvider>
+			</Provider>
+		</HelmetProvider>
 	</React.StrictMode>
 );
 reportWebVitals();
